@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/grid.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/common.css" />
+    <link rel="stylesheet" href="/css/food.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+      <span th:text="${checklog}" hidden id="checklog"></span>
+      <span th:text="${name}" hidden id="user_name"></span>
+      <div class="main__header">
+        <span id="checkSl" hidden th:text="${checkSl}"></span>
+      </div>
+      <div class="content">
+        <span id="check" hidden th:text="${check}"></span>
+        <div class="background__content">
+          <img src="/img/img__slider1.jpg" alt="" />
+        </div>
+        <div class="navbar__content">
+          <ul class="navcontent">
+            <li class="navcontent-item">
+              <a href="/thuc-don/mon-moi-mon-ngon"> COMBO</a>
+            </li>
+            <li class="navcontent-item">
+              <a href="/thuc-don/ga-gion-vui-ve">GÀ GIÒN VUI VẺ</a>
+            </li>
+            <li class="navcontent-item">
+              <a href="/thuc-don/ga-sot-cay"> GÀ SỐT CAY </a>
+            </li>
+            <li class="navcontent-item">
+              <a href="/thuc-don/mi-y-sot-bo-bam"> MỲ Ý SỐT BÒ BĂM </a>
+            </li>
+            <li class="navcontent-item">
+              <a href="/thuc-don/burger-com">BURRGER & CƠM</a>
+            </li>
+            <li class="navcontent-item">
+              <a href="/thuc-don/phan-an-phu"> PHẦN ĂN PHỤ</a>
+            </li>
+            <li class="navcontent-item">
+              <a href="/thuc-don/mon-trang-mieng"> MÓN TRÁNG MIỆNG</a>
+            </li>
+          </ul>
+        </div>
+        <div class="animation__scale"></div>
+        <a href="/cart-list" class="cart__icon">
+          <i class="fas fa-shopping-cart"></i>
+          <div class="quantityProductOfCart">
+            <span th:text="${quantityProductOfCart}"></span>
+          </div>
+        </a>
+        <div class="food__content">
+          <div class="main__grid">
+            <div class="row__grid">
+              <div class="col-fl4" th:each="note:${list}">
+                <form th:action="${link}" class="food__link" method="post">
+                  <img th:src="${note.img}" alt="" class="food__img" />
+                  <div class="information__food">
+                    <span class="food__name" th:text="*{note.name}"></span>
+                    <input
+                      type="text"
+                      hidden
+                      th:value="*{note.name}"
+                      name="name__product"
+                    />
+                    <span
+                      class="food__price"
+                      th:text="*{note.price +'đ'}"
+                      name="price__product"
+                    ></span>
+                    <input
+                      type="text"
+                      hidden
+                      th:value="*{note.price}"
+                      name="price__product"
+                    />
+                    <div class="quantity">
+                      <i class="quantity__btn fas fa-minus minus"></i>
+                      <input
+                        type="text"
+                        class="input__quantity"
+                        value="0"
+                        name="input__quantity"
+                      />
+                      <i class="quantity__btn fas fa-plus plus"></i>
+                    </div>
+                  </div>
+                  <button type="submit" class="buy__food">ĐẶT HÀNG</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </div>
+  </body>
+  <script src="/js/header.js"></script>
+  <script>
+    const checkSl = Number.parseInt(
+      document.querySelector("#checkSl").textContent
+    );
+    newHeader();
+
+    (function () {
+      const list = document.querySelectorAll(".navbar__link");
+      list[checkSl].classList.add("navbar__item-active");
+    })();
+
+    (function () {
+      const col_fl4 = document.querySelectorAll(".col-fl4");
+      console.log(col_fl4);
+      const length = col_fl4.length;
+      if (length > 3) {
+        switch (length % 3) {
+          case 0: {
+            col_fl4[length - 1].style.borderBottom = "none";
+            col_fl4[length - 2].style.borderBottom = "none";
+            col_fl4[length - 3].style.borderBottom = "none";
+            console.log(length % 3);
+            break;
+          }
+          case 1: {
+            col_fl4[length - 1].style.borderBottom = "none";
+            console.log(length % 3);
+
+            break;
+          }
+          case 2: {
+            col_fl4[length - 1].style.borderBottom = "none";
+            col_fl4[length - 2].style.borderBottom = "none";
+
+            break;
+          }
+        }
+      }
+    })();
+    const index = Number.parseInt(document.getElementById("check").textContent);
+    function clickMenu() {
+      let temp = 0;
+      document
+        .querySelectorAll(".navcontent-item")
+        [index].classList.add("active");
+    }
+    clickMenu();
+
+    // handleSrollFood
+    (function () {
+      const height = 650 + document.querySelector(".main__header").offsetHeight;
+      document.documentElement.scrollTop = height;
+    })();
+
+    // handleClickQuantity
+    (function () {
+      const inputQuantity = document.querySelectorAll(".input__quantity");
+      document.querySelectorAll(".plus").forEach((item, index) => {
+        item.onclick = (event) => {
+          let value = Number.parseInt(inputQuantity[index].value);
+          value++;
+          inputQuantity[index].value = value;
+        };
+      });
+
+      document.querySelectorAll(".minus").forEach((item, index) => {
+        item.onclick = (event) => {
+          let value = Number.parseInt(inputQuantity[index].value);
+
+          inputQuantity[index].value = --value >= 0 ? value : 0;
+        };
+      });
+    })();
+
+    // Kiểm tra xem người dùng đã chọn số lượng món hay chưa
+    (function () {
+      const inputQuantitys = document.querySelectorAll(".input__quantity");
+      const forms = document.querySelectorAll(".food__link");
+      const buttons = document.querySelectorAll("button[type='submit']");
+      forms.forEach((item, index) => {
+        item.onsubmit = (event) => {
+          if (inputQuantitys[index].value != "0") {
+            return true;
+          }
+          return false;
+        };
+      });
+
+      buttons.forEach((button, index) => {
+        button.onmousemove = (event) => {
+          if (inputQuantitys[index].value == "0") {
+            event.target.style.cursor = "not-allowed";
+          } else {
+            event.target.style.cursor = "pointer";
+          }
+        };
+      });
+    })();
+
+    //  Set giá trị mặc định khi chưa đăng nhập cho cart
+    (function () {
+      const quantityProductOfCart = document.querySelector(
+        ".quantityProductOfCart > span"
+      ).textContent;
+      if (quantityProductOfCart == "") {
+        document.querySelector(".quantityProductOfCart > span").textContent = 0;
+      }
+    })();
+  </script>
+  <script src="/js/footer.js"></script>
+</html>

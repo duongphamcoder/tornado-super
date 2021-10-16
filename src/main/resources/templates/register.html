@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./css/grid.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="app">
+        <span  hidden id="checklog"></span>
+        <span hidden  id="user_name"></span>
+        <div class="main__header"></div>
+        <div class="content">
+            <span id="check" hidden  th:text="${check1}"></span>
+    </div>     
+    <div class="footer"></div>
+    <script src="/js/header.js"></script>
+        <script src="/js/register.js"></script>
+        <script>
+             newHeader();
+            const registerForm  = {
+                    headerName: 'Đăng Ký',
+                    action: 'action="/register"',
+                    obj:'abc',
+                    list : [
+                            {
+                                name: 'Tên (*)',
+                                type: 'text',
+                                for: 'username',
+                                field: 'th:field="*{username}"'
+                            },
+                            {
+                                name: 'SĐT (*)',
+                                type: 'text',
+                                for: 'phonenumber',
+                                field: 'th:field="*{phoneNumber}"'
+                            },
+                            {
+                                name: 'Email (*)',
+                                type: 'email',
+                                for: 'email',
+                                field: 'th:field="*{email}"'
+                            },
+                            {
+                                name: 'Mật khẩu (*)',
+                                type: 'password',
+                                for: 'password',
+                                field: '"th:field=*{password}"'
+                            },
+                            {
+                                name: 'Xác nhận mật khẩu (*)',
+                                type: 'password',
+                                for: 'confirm',
+                                field: ''
+                            },
+                            {
+                                name: 'Ngày sinh',
+                                type: 'date',
+                                for: 'date',
+                                field:''
+                            },
+                    ],
+                    gender: [
+                            {
+                                name: 'Nam',
+                                value:'male'
+                            },
+                            {
+                                name:'Nữ',
+                                value: 'female'
+                            },
+                            {
+                                name: 'Khác',
+                                value:'isdifferent'
+                            }
+                    ]
+            }
+            const loginForm = {
+                    headerName: 'Đăng Nhập',
+                    name: ' name="f"',
+                    action: 'action="/j_spring_security_check"',
+                    list : [
+                            {
+                                name: 'Email (*)',
+                                type: 'text',
+                                for: 'username',
+                            },
+                            {
+                                name: 'Mật khẩu (*)',
+                                type: 'password',
+                                for: 'password',
+                            },
+                    ]
+            }
+            showRegister(($('#check').innerText !== '')  ?  loginForm : registerForm,$('#check').innerText);
+        </script>
+          <script src="/js/footer.js"></script>
+</body>
+
+</html>

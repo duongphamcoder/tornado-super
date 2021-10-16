@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .content {
+  }
+  
+  .background_slider {
+    padding-top: 720px;
+    background-image: url("../img/service__bgr.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  
+  .background_slider-item {
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    --dodai: 450px;
+    width: var(--dodai);
+    height: var(--dodai);
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .background_slider-item > h1,
+  .background_slider-item > h4 {
+    padding: 20px;
+    line-height: 35px;
+  }
+  
+  .btn__scroll-down {
+    animation: slideUpAndDown 0.6s linear alternate infinite;
+  }
+  
+  @keyframes slideUpAndDown {
+    from {
+      transform: translateY(-10px);
+    }
+    to {
+      transform: translateY(10px);
+    }
+  }
+  
+  .btn__scroll-down > i {
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .list__service {
+  }
+  
+  .list__service-item {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .service__item {
+    text-decoration: none;
+    width: 900px;
+    display: flex;
+    margin: auto;
+    padding: 40px 0;
+  }
+  
+  .service__item > img {
+    width: 430px;
+    padding-right: 100px;
+  }
+  
+  .service__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .service__content > h1 {
+    font-size: 45px;
+    padding: 10px 0;
+  }
+  
+  .service__content > span {
+    color: #000;
+    font-size: 17px;
+    font-weight: 300;
+    padding: 10px 0;
+  }
+  
+  .service__content > #service_1 {
+    color: #c62026;
+  }
+  
+  .service__content > #service_2 {
+    color: #a8b919;
+  }
+  
+  .service__content > #service_3 {
+    color: #e97c00;
+  }
+  
+  .service__content > #service_4 {
+    color: #5dc6d1;
+  }
+  
+  .btn-link-item {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #c62026;
+    margin: 10px 0;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-link-item::after {
+      content:'';
+      position: absolute;
+      width: 30px;
+      height: 100px;
+      background-color: rgba(255, 255, 255, 0.5);
+      top: -100%;
+      left: -50%;
+      transform: rotate(35deg);
+      transition: left 0.2s linear;
+  }
+  
+  .btn-link-item:hover {
+      color: #42210B;
+      background-color: #FAC437;
+  }
+  
+  .btn-link-item:hover.btn-link-item::after {
+      left: calc(100% + 25px);
+  }

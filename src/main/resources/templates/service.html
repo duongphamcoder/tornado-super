@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/grid.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/service.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="app">
+        <span th:text="${checklog}" hidden id="checklog"></span>
+        <span th:text="${name}" hidden id="user_name"></span>
+        <div class="main__header">
+          <span id="checkSl" hidden th:text="${checkSl}"></span>
+        </div>
+      <div class="content">
+        <div class="background_slider">
+          <div class="background_slider-item">
+            <h1 id="service_2">DỊCH VỤ</h1>
+            <h4>TẬN HƯỞNG NHỮNG KHOẢNH KHẮC TRỌN VẸN CÙNG JOLLIBEE</h4>
+            <div class="btn__scroll-down">
+              <i class="icon__down fas fa-angle-double-down"></i>
+            </div>
+          </div>
+        </div>
+        <div class="list__service">
+          <div class="list__service-item">
+            <a href="/thuc-don/ga-gion-vui-ve" class="service__item">
+              <img src="../img/service__img4.png" alt="" />
+              <div class="service__content">
+                <h1 id="service_1">1900 - 1533</h1>
+                <div class="btn-link">
+                  <button class="btn-link-item">Xem Thêm</button>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="list__service-item">
+            <a href="/dich-vu/kid-party" class="service__item">
+              <img src="../img/birthday.jpg" alt="" />
+              <div class="service__content">
+                <div class="service__content">
+                  <h1 id="service_2">ĐẶT TIỆC SINH NHẬT</h1>
+                  <span>
+                    Bạn đang tìm ý tưởng cho một buổi tiệc sinh nhật thật đặc
+                    biệt dành cho con của bạn? Hãy chọn những bữa tiệc của
+                    Jollibee. Sẽ có nhiều điều vui nhộn và rất đáng nhớ dành cho
+                    con của bạn.
+                  </span>
+
+                  <div class="btn-link">
+                    <button class="btn-link-item">Xem Thêm</button>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="list__service-item">
+            <a href="/dich-vu/kid-club" class="service__item">
+              <img src="../img/kid__club.jpg" alt="" />
+              <div class="service__content">
+                <div class="service__content">
+                  <h1 id="service_3" >JOLLIBEE KIDS CLUB</h1>
+                  <span>
+                    Hãy để con bạn thoả thích thể hiện và khám phá tài năng bên
+                    trong của mình cùng cơ hội gặp gỡ những bạn đồng lứa khác
+                    tại Jollibee Kids Club. Cùng tìm hiểu thêm thông tin về
+                    Jollibee Kids Club và tham gia ngay.
+                  </span>
+                  <div class="btn-link">
+                    <button class="btn-link-item">Xem Thêm</button>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="list__service-item">
+            <a href="/dich-vu/big-order" class="service__item">
+              <img src="../img/service__img3.png" alt="" />
+              <div class="service__content">
+                <div class="service__content">
+                  <h1 id="service_4">ĐƠN HÀNG LỚN</h1>
+                  <span>
+                    Để phục vụ sở thích quây quần cùng gia đình và bạn bè,
+                    chương trình chiết khấu hấp dẫn dành cho những đơn hàng lớn
+                    đã ra đời để đem đến những lựa chọn tiện lợi hơn cho bạn.
+                    Liên hệ ngay với cửa hàng gần nhất để được phục vụ.
+                  </span>
+                  <div class="btn-link">
+                    <button class="btn-link-item">Xem Thêm</button>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </div>
+  </body>
+  <script src="/js/header.js"></script>
+  <script>
+        const index = Number.parseInt(
+      document.querySelector("#checkSl").textContent
+    );
+    console.log(index)
+    newHeader();
+
+    (function () {
+      const list = document.querySelectorAll(".navbar__link");
+      list[index].classList.add("navbar__item-active");
+    })();
+
+    const iconDown = document.querySelector(".icon__down");
+    iconDown.onclick = () => {
+        const height = document.querySelector('.background_slider').offsetHeight +  document.querySelector('.main__header').offsetHeight
+      document.documentElement.scrollTop = height;
+    };
+  </script>
+  <script src="/js/footer.js"></script>
+</html>

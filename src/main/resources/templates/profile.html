@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/grid.css" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/profile.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div id="app">
+     
+        <span th:text="${checklog}" hidden id="checklog"></span>
+      <span th:text="${name}" hidden id="user_name"></span>
+      <div class="main__header">
+        <span id="checkSl" hidden th:text="${checkSl}"></span>
+      </div>
+      <div class="content">
+        <div class="grid wide">
+          <h1>THÔNG TIN KHÁCH HÀNG</h1>
+          <div class="row main__profile">
+            <div class="col l-3">
+              <div class="profile">
+                <div class="user__profile">
+                  <div class="avatar_user">
+                    <img src="./img/avatar__user.jpg" alt="" />
+                  </div>
+                  <span th:text="${user_name}">Pham Tan Duong</span>
+                </div>
+                <div class="menu__profile">
+                  <a href="/infor-user" class="menu__profile-link ">
+                    <div class="menu__profile-item">
+                      <i class="fas fa-user"></i>
+                      <span>Thông tin tài khoản</span>
+                    </div>
+                  </a>
+                  <a href="/cart-list" class="menu__profile-link">
+                    <div class="menu__profile-item">
+                      <i class="fas fa-shopping-cart"></i>
+                      <span>Đơn hàng</span>
+                    </div>
+                  </a>
+                  <form action="/logout" method="post" class="menu__profile-link">
+                    <div class="menu__profile-item">
+                      <i class="fas fa-sign-out-alt"></i>
+                      <span><label for="logout__ofProfile">Đăng xuất</label></span>
+                      <input type="submit" hidden id="logout__ofProfile" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="col l-9">
+                <span id="profile_check" hidden th:text="${profileCheck}"></span>
+              <div class="profile__list " th:object="${user}">
+                <div class="profile__list-item active">
+                  <span>Tên:</span>
+                  <h4 th:text="*{username}">Pham Tan Duong</h4>
+                </div>
+                <div class="profile__list-item">
+                  <span>SĐT:</span>
+                  <h3 th:text="*{phoneNumber}">12323123</h3>
+                </div>
+                <div class="profile__list-item">
+                  <span>Email:</span>
+                  <h3  th:text="*{email}">Pham Tan Duong@@</h3>
+                </div>
+                <div class="profile__list-item">
+                  <span>Ngày sinh:</span>
+                  <h3 th:text="*{date}">Pham Tan Duong</h3>
+                </div>
+                <div class="profile__list-item">
+                  <span>Giới tính:</span>
+                  <h3 th:text="*{gender}">Pham Tan Duong</h3>
+                </div>
+              </div>
+              <div class="cart__list">
+                <div class="grid wide">
+                  <div class="row">
+                    <div class="col l-4"><span>Tên món</span></div>
+                    <div class="col l-2"><span>Giá tiền</span></div>
+                    <div class="col l-2"><span>Số lượng</span></div>
+                    <div class="col l-2"><span>Thành tiền</span></div>
+                  </div>
+                </div>
+                <div class="list__product">
+                  <div class="grid wide" th:each="item : ${listPorduct}">
+                    <div class="row">
+                      <div class="col l-4"><span th:text="${item.nameProduct}"></span></div>
+                      <div class="col l-2"><span th:text="${item.priceProduct + 'đ'}"></span></div>
+                      <div class="col l-2"><span  th:text="${item.quantityProduct}">Số lượng</span></div>
+                      <div class="col l-2"><span  th:text="${item.sumProduct + 'đ'}">Thành tiền</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="pay__btn">
+                    <span>Tổng tiển:<span th:text="${sumAllProduct + 'đ'}"></span></span>
+                    <span >Mua hàng</span>
+                  </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </div>
+  </body>
+
+  <script src="./js/header.js"></script>
+  <script>
+    // const index = Number.parseInt(
+    //   document.querySelector("#checkSl").textContent
+    // );
+    
+    newHeader();
+
+    // (function () {
+    //   const list = document.querySelectorAll(".navbar__link");
+    //   list[index].classList.add("navbar__item-active");
+    // })();
+
+    console.log((document.querySelector(".profile__list-item")))
+
+    //Check select profile 
+    ;(function() {
+        const indexProfile = Number(document.getElementById('profile_check').textContent);
+        const listSelectProfile = document.querySelectorAll(".menu__profile-link")
+        console.log(indexProfile)
+       switch(indexProfile) {
+           case 0: {
+               listSelectProfile[indexProfile].classList.add("active")
+               document.querySelector(".profile__list").style.display = "flex"
+               break
+           }
+           case 1: {
+               listSelectProfile[indexProfile].classList.add("active")
+               document.querySelector(".cart__list").style.display = "block"
+               break
+           }
+       }
+    }())
+  </script>
+  <script src="./js/footer.js"></script>
+</html>

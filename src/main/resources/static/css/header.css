@@ -1,0 +1,511 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.app {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+
+.header {
+    width: 100%;
+    background-color: var(--mainstream-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 1;
+}
+
+.logo__jolli {
+    width: 200px;
+    height: 100%;
+    display: flex;
+    align-self: center;
+    justify-content: flex-end;
+}
+
+.logo__phoneNumber {
+    height: 100%;
+    padding: 0 20px;
+}
+
+.logo__jolli > a {
+    display: block;
+    text-decoration: none;
+}
+
+.logo__jolli-item {
+    display: block;
+    width: 95px;
+}
+
+.header__nav {
+   flex: 1;
+   max-width: 1200px;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   position: relative;
+}
+
+.form {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px;
+}
+
+.form__link {
+    text-decoration: none;
+}
+
+.form-icon {
+    width:40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 5px;
+    transition: border 0.2s ease-in;
+}
+
+.icon-user {
+    font-size: 20px;
+    color: #FFF;
+    padding:6px 8px;
+    border-radius: 50%;
+}
+
+.form-icon:hover {
+    border: 2px solid #fff;
+}
+
+.form-icon:hover .icon-user{
+    cursor: pointer;
+    background-color: #fff;
+    color: var(--mainstream-color);
+}
+
+.login__or__register {
+    align-items: center;
+}
+
+.login__or__register > .seperate {
+    color: #FFF;
+    font-size: 15px;
+    padding: 0 3px;
+}
+
+.login__or__register > .user__link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+.logout__btn {
+    font-size: 12px;
+    color: #fff;
+    padding: 0 5px;
+    margin-left:5px;
+    border-left: 2px solid #fff;
+     border-right: 2px solid #fff;
+     cursor: pointer;
+}
+
+.logout__btn:hover {
+    color: rgb(216, 207, 207)
+}
+
+.register {
+
+}
+
+.register,.login {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.register:hover,
+.login:hover {
+    opacity:0.7;
+}  
+
+.login {
+
+}
+
+.language {
+    margin: 0 20px;
+    display: flex;
+}
+
+.language-item {
+    display: block;
+    font-size: 15px;
+    text-decoration: none;
+    color: var(--text-color);
+    position: relative;
+    padding: 0 5px;
+   
+}
+
+.language-item:first-child{
+    border-right: 2px solid #FFF;
+}
+
+.language-active {
+    color: #F9C237;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar__link {
+    display: block;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: #FFF;
+    padding: 15px;
+    border-radius: 15px 15px 0 0;
+    margin-bottom: -2px;
+}
+
+.navbar__item {
+    list-style: none;
+    padding: 0 10px;
+    margin-bottom: -2px;
+    position: relative;
+}
+
+.navbar__item:hover .navbar__link {
+    cursor: pointer;
+    background-color: #F4D2D6;
+    color: rgb(149,14,8);
+}
+
+.navbar__item-active {
+    background-color: #F4D2D6;
+    color: rgb(149,14,8);
+}
+
+.navbar li:hover .navbar__menu {
+    display: flex;
+}
+
+.navbar__menu {
+    width: 1100px;
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    transform: translateX(-45%);
+    background-color: #F4D2D6;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    animation: show 0.3s linear;
+    z-index: 1;
+}
+
+@keyframes show {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+
+.main__header-scroll {
+    width: 100%;
+    display: none;
+    justify-content: center;
+    position:fixed;
+    z-index: 10;
+    background-color:rgb(224, 208, 212);
+    box-shadow:0 2px 5px rgba(0, 0, 0, 0.5);
+} 
+
+
+@keyframes identifier {
+    from {
+        transform: scale(0.3);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes close {
+    from {
+      opacity: 1;
+    }
+    to {
+        opacity: 0
+    }
+}
+
+.navbar__menu1 {
+    display: flex;
+}
+
+
+.navbar__menu-link {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    padding:15px;
+}
+
+.navbar__menu-item {
+    list-style: none;
+}
+
+.navbar__menu-item > a > h3 {
+    font-size: 15px;
+    color: #42210B;
+}
+
+.img__menu {
+    width: 100px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.navbar__menu-link:hover .img__menu {
+    transform: scale(1.3);
+}
+
+
+.overlay__in__or__out {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: none;
+}
+
+
+.login__form {
+    width: 600px;
+    height: 565px;
+    background-color: #F9C237;
+    margin: 30px auto;
+    position: relative;
+    border-radius: 3px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+         transform: scale(0.3);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.form__input {
+    height: 50%;
+    background-color: var(--mainstream-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-radius: 3px;
+}
+
+.form__input::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    border-style: solid;
+    border-width: 20px 20px;
+    border-color: var(--mainstream-color) transparent transparent transparent;
+    z-index: 1;
+}
+
+.close__form {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: #F9C237; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.close__icon {
+    color: var(--mainstream-color);
+}
+
+.overlay__logo {
+
+}
+
+.overlay__logo-item {
+    width: 100px;
+}
+
+.list__input {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.form__input-header {
+    color: var(--text-color);
+    line-height: 35px;
+}   
+
+.list__input > input {
+    display: block;
+    padding: 8px 10px;
+    margin: 5px 0;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+}
+
+.check__box {
+    display: flex;
+    align-items: center;
+}
+
+.check__box > input {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    appearance: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.check__box > input:checked {
+    appearance: checkbox;
+}
+
+.check__box > span {
+    color: var(--text-color);
+    padding:0 10px;
+    font-size: 15px;
+}
+
+
+.form__button {
+    width: 320px;
+    height: 50%;
+    background-color: #F9C237;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-radius: 3px;
+    padding: 30px 0;
+    margin: auto;
+}
+
+.btn__submit {
+   text-align: center;
+}
+
+.btn__submit-item {
+    color: var(--text-color);
+    width: 170px;
+    height: 45px;
+    margin: 10px 0;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #C62026;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.forgot__password {
+    display: block;
+    text-decoration: none;
+    color: #42210B;
+}
+
+.link__login-item {
+    display: block;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.link__login-item::after,
+.btn__submit-item::after  {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 100px;
+    background-color: rgba(225, 225, 225, 0.5);
+    top: -50%;
+    left: -50%;
+    transform: rotate(35deg);
+    transition: left 0.3s linear;
+}
+
+.link__login-item:hover.link__login-item::after,
+.btn__submit-item:hover.btn__submit-item::after{
+    left: calc(100% + 10px);
+}
+
+.fb {
+    background-color: #0071BC;
+}
+
+.gg {
+    background-color: #CA1133;
+}
+
+.form__button > span {
+    font-size: 14px;
+}
+
+.form__button > span > a {
+    text-decoration: none;
+    color: var(--mainstream-color);
+}
+

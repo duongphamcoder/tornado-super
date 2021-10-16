@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    height: 100vh;
+}
+
+
+.content {
+    width: 100%;
+    background-image: url('/img/background__service.png');
+}
+
+#form_regis {
+    width: 700px;
+    margin: auto;
+    padding: 30px 5px 0;
+    
+}
+
+.form_regis {
+    width: 1200px;
+    margin: auto;
+    background-color: #fff;
+    padding: 40px 5px;
+}
+
+#form_regis > h1 {
+   text-align: center;
+   color: #CA1133;
+   font-size: 60px;
+}
+
+.list__form {
+    padding: 30px 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.list__form-item {
+    display: flex;
+    justify-content: space-between;
+    padding:10px ;
+    
+}
+
+
+.list__form-item > input {
+    width: 360px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline-color: #EFC65A;
+}
+
+.list__form-item > label {
+    font-size:20px;
+}
+
+.gender__list {
+    width: 360px;
+    display:flex;
+}
+
+.gender__item {
+    padding:0 5px;
+    
+}
+
+.gender__item > input { 
+    transform: scale(1.5);
+    cursor: pointer;
+    
+}
+
+.gender__item > input[type="radio"]:checked {
+    background-color:#C62026;
+}
+
+.gender__item > label { 
+    padding:0 5px;
+    cursor: pointer;
+}
+
+.policy__and__btn { 
+    padding: 40px 0 0;
+
+}
+
+.policy__list {
+    display: none;
+}
+
+.policy__list.active {
+    display: block;
+}
+
+.policy__item {
+    padding: 10px 0;
+}
+
+.policy__item > input {
+    transform: scale(1.5);
+}
+
+.policy__item > label {
+    padding: 0 5px;
+    cursor: pointer;
+    font-size:15px
+}
+
+
+.policy__item > label > a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+}
+
+
+.regis__btn {
+    display: flex;
+    justify-content: space-between;
+    padding:20px 0;
+}
+
+.regis__btn > span {
+    font-size:13px
+}
+
+.regis__btn > button { 
+    border:none;
+    background-color:#C62026;
+    cursor: pointer;
+}
+
+.regis__submit {
+    padding:10px 35px;
+    color: #fff;
+    border-radius:5px;
+    font-size:20px;
+    font-weight: 700;
+}
+
+.regis__btn > a {
+    text-decoration: none;
+    display: block;
+    font-size:15px;
+}
+
+.regis__fb {
+    background-color: #0071BC;
+}
+
+.regis__gg {
+    background-color: #CA1133;
+}
+
+.forgot__password {
+    display: none;
+}
+
+.forgot__password.active {
+    display: block;
+}
